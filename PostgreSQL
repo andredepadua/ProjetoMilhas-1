@@ -1,0 +1,16 @@
+CREATE TABLE users (
+
+    id SERIAL PRIMARY KEY,
+    username VARCHAR(50) UNIQUE NOT NULL,
+    email VARCHAR(100) UNIQUE NOT NULL,
+    password_ VARCHAR(255) NOT NULL,
+    INSERT INTO usuarios(nome)VALUES (' José dos Santos ')created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    INSERT INTO emails(email)VALUES ('josedossantos@gmail.com')created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+    INSERT INTO senhas(password)VALUES ('password') created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+        
+
+    
+    
+
+
+)
