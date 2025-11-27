@@ -3,7 +3,6 @@ package com.Web.Plamilhas.Service;
 import com.Web.Plamilhas.DTO.CartaoDTO;
 import com.Web.Plamilhas.Entity.CartaoUsuarioEntity;
 import com.Web.Plamilhas.Repository.CartaoUsuarioRepository;
-import com.Web.Plamilhas.Repository.ProgramaPontosRepository;
 import com.Web.Plamilhas.Repository.UsuarioRepository;
 
 import org.springframework.stereotype.Service;
@@ -15,17 +14,16 @@ public class CartaoUsuarioService {
 
     private final CartaoUsuarioRepository repo;
     private final UsuarioRepository usuarioRepo;
-    private final ProgramaPontosRepository programaRepo;
-
+   
     public CartaoUsuarioService(
         CartaoUsuarioRepository repo,
-        UsuarioRepository usuarioRepo,
-        ProgramaPontosRepository programaRepo
+        UsuarioRepository usuarioRepo
+        
     ) {
         this.repo = repo;
         this.usuarioRepo = usuarioRepo;
-        this.programaRepo = programaRepo;
     }
+       
 
     public CartaoUsuarioEntity criar(CartaoDTO dto) {
 
@@ -33,7 +31,6 @@ public class CartaoUsuarioService {
                 .numeroCartao(dto.getNumeroCartao())
                 .bandeira(dto.getBandeira())
                 .usuario(usuarioRepo.findById(dto.getUsuarioId()).orElseThrow())
-                .programa(programaRepo.findById(dto.getProgramaId()).orElseThrow())
                 .pontosPorReal(dto.getPontosPorReal())
                 .build();
 

@@ -26,9 +26,7 @@ public class ResgateEntity {
     @ManyToOne @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuario;
 
-    @ManyToOne @JoinColumn(name = "programa_id")
-    private ProgramaEntity programa;
-
+   
     private Long pontosUsados;
     private OffsetDateTime dataResgate;
     private String descricao;

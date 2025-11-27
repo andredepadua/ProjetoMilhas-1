@@ -35,8 +35,7 @@ public class CompraEntity {
     @ManyToOne @JoinColumn(name = "cartao_usuario_id")
     private CartaoUsuarioEntity cartao;
 
-    @ManyToOne @JoinColumn(name = "programa_id")
-    private ProgramaEntity programa;
+
 
     private Double valor;
     private String moeda;
