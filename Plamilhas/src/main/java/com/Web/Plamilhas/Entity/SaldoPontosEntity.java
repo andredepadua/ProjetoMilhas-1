@@ -27,6 +27,8 @@ public class SaldoPontosEntity {
     @ManyToOne @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuario;
 
+    @ManyToOne @JoinColumn(name = "programa_id")
+    private ProgramaEntity programa;
     
 
     private Long saldo;

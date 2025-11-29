@@ -27,6 +27,8 @@ public class HistoricoPontosEntity {
     @ManyToOne @JoinColumn(name = "usuario_id")
     private UsuarioEntity usuario;
 
+    @ManyToOne @JoinColumn(name = "programa_id")
+private ProgramaEntity programa;
     
     private Integer variacao;
     private Long saldoApos;
