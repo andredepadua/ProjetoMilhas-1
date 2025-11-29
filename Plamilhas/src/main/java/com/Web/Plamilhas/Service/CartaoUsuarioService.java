@@ -1,5 +1,25 @@
 package com.Web.Plamilhas.Service;
 
+import com.Web.Plamilhas.Entity.CartaoUsuarioEntity;
+import java.util.List;
+import java.util.UUID;
+
+public interface CartaoUsuarioService {
+    
+    CartaoUsuarioEntity criar(CartaoUsuarioEntity cartao);
+    
+    CartaoUsuarioEntity buscarPorId(UUID id);
+    
+    CartaoUsuarioEntity atualizar(UUID id, CartaoUsuarioEntity cartaoAtualizado);
+    
+    void deletar(UUID id);
+    
+    List<CartaoUsuarioEntity> listarPorUsuario(UUID usuarioId);
+}
+
+
+/*package com.Web.Plamilhas.Service;
+
 import com.Web.Plamilhas.DTO.CartaoDTO;
 import com.Web.Plamilhas.Entity.CartaoUsuarioEntity;
 import com.Web.Plamilhas.Repository.CartaoUsuarioRepository;
@@ -40,4 +60,4 @@ public class CartaoUsuarioService {
     public List<CartaoUsuarioEntity> listarPorUsuario(UUID id) {
         return repo.findByUsuarioId(id);
     }
-}
+}*/

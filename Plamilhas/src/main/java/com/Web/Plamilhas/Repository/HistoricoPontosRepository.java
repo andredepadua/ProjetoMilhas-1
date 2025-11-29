@@ -1,5 +1,6 @@
 package com.Web.Plamilhas.Repository;
 
+import java.util.List;
 import java.util.UUID;
 
 import org.springframework.data.jpa.repository.JpaRepository;
@@ -9,5 +10,8 @@ import com.Web.Plamilhas.Entity.HistoricoPontosEntity;
 
 @Repository
 public interface HistoricoPontosRepository extends JpaRepository <HistoricoPontosEntity,UUID> {
+    List<HistoricoPontosEntity> findByUsuarioId(UUID usuarioId);
+    
+    List<HistoricoPontosEntity> findByUsuarioIdAndProgramaId(UUID usuarioId, Integer programaId);
     
 }

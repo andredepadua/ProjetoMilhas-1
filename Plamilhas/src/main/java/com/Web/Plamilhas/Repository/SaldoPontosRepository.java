@@ -1,5 +1,7 @@
 package com.Web.Plamilhas.Repository;
 
+
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
@@ -18,4 +20,5 @@ public interface SaldoPontosRepository extends JpaRepository <SaldoPontosEntity,
      * @return Um Optional contendo o SaldoPontosEntity correspondente, se encontrado.
      */
     Optional<SaldoPontosEntity> findByUsuarioIdAndProgramaId (UUID usuarioId, Integer programaId);
+    List<SaldoPontosEntity> findByUsuarioId(UUID usuarioId);
 }

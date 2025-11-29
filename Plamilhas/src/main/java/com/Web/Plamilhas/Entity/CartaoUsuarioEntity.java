@@ -1,5 +1,6 @@
 package com.Web.Plamilhas.Entity;
 
+import java.time.OffsetDateTime;
 import java.util.UUID;
 
 import jakarta.persistence.Column;
@@ -22,22 +23,33 @@ import lombok.NoArgsConstructor;
 public class CartaoUsuarioEntity {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.UUID)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private UUID id;
 
-    @Column(nullable = false)
-    private String numeroCartao;
-
-    @Column(nullable = false)
-    private String bandeira; // Visa, Mastercard…
-
-    @ManyToOne
+    // Relacionamento (deve existir para vincular ao usuário)
+    @ManyToOne 
     @JoinColumn(name = "usuario_id")
-    private UsuarioEntity usuario;
+    private UsuarioEntity usuario; 
 
-   
-    // ex: 1 ponto por real
-    private double pontosPorReal = 1.0;
+    // 1. CAMPO FALTANDO QUE GERA O getNome()
+    @Column(nullable = false)
+    private String nome; // Apelido ou nome do cartão (Ex: "Meu Visa")
+
+    // 2. CAMPO FALTANDO QUE GERA O getNumeroFinal()
+    @Column(name = "numero_final", length = 4, nullable = false)
+    private String numeroFinal; // Apenas os 4 últimos dígitos (para segurança)
+    
+    private String bandeira; // Visa, Master, Elo, etc.
+
+    // Relacionamento (deve existir para vincular ao programa de pontos)
+    @ManyToOne 
+    @JoinColumn(name = "programa_id")
+    private ProgramaEntity programa;
+
+    private OffsetDateTime criadoEm;
+    private OffsetDateTime atualizadoEm;
+
+    // ... getters e setters são gerados pelo @Data
 }
 
 
