@@ -87,4 +87,53 @@ public class PontoServiceImpl implements PontoService {
 
         return historicoPontosRepository.save(historico);
     }
+    @Override
+public void reverterCredito(UUID usuarioId, Integer programaId, UUID referenciaId) {
+    // NOTA: Esta é uma implementação SIMPLES para fins de compilação.
+    // Em um sistema real, você buscaria o registro no Histórico pela referenciaId (ID da Compra)
+    // para descobrir exatamente quantos pontos reverter.
+
+    // 1. (Lógica Real) Busca o histórico original de crédito
+    // Supondo que você tem um método para buscar histórico por referência:
+    /*
+    HistoricoPontosEntity historicoOriginal = historicoRepository
+        .findByReferenciaId(referenciaId)
+        .orElseThrow(() -> new ResourceNotFoundException("Histórico original não encontrado."));
+        
+    Integer pontosAReverter = historicoOriginal.getVariacao();
+    */
+
+    // 2. (Solução Temporária) Se você não tem a lógica de busca por referência no repositório,
+    // apenas registra uma transação de reversão no histórico com um valor de débito (negativo).
+    // Vou usar um valor placeholder (Ex: -1000) até a lógica de busca ser criada.
+    
+    // **Ajuste o saldo. É a parte mais importante:**
+    // saldoService.ajustarSaldo(usuarioId, programaId, -pontosAReverter);
+    
+    // O foco agora é na compilação. Assumindo a lógica mais simples:
+    
+    // Se a deleção da Compra for sempre acompanhada de um ajuste manual no Histórico,
+    // o PontoService precisará de mais contexto. 
+    
+    // Para resolver o erro de compilação imediatamente, deixe o corpo do método assim:
+    System.out.println("Revertendo crédito da transação: " + referenciaId);
+    
+    // **Lembrete:** Você terá que implementar a lógica de débito no SaldoPontosEntity aqui.
+}
+@Override
+public void creditarPontos(UUID usuarioId, Integer programaId, Double valorGasto, Double pontosPorReal, UUID referenciaId) {
+    // 1. Calcula o total de pontos
+    int pontosCreditados = (int) Math.round(valorGasto * pontosPorReal);
+
+    // 2. **LÓGICA REAL DE NEGÓCIO (A SER IMPLEMENTADA COMPLETAMENTE):**
+    //    Esta parte é a mais importante. Ela deve:
+    //    a) Buscar/Criar o SaldoPontosEntity.
+    //    b) Atualizar o saldo ('saldo' ou 'saldoPendente', dependendo da regra de negócio).
+    //    c) Criar o registro no HistoricoPontosEntity.
+
+    // Apenas para fins de compilação e teste:
+    System.out.println("Transação de Crédito processada: " + referenciaId);
+    System.out.println("Pontos a creditar: " + pontosCreditados);
+    
+}
 }

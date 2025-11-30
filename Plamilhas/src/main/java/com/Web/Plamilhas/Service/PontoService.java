@@ -5,6 +5,15 @@ import com.Web.Plamilhas.Enums.OrigemPontos;
 import java.util.UUID;
 
 public interface PontoService {
+    /**
+ * Calcula e credita pontos no saldo do usuário e registra no histórico.
+ * @param usuarioId ID do usuário
+ * @param programaId ID do programa de pontos
+ * @param valorGasto Valor monetário da compra
+ * @param pontosPorReal Fator de conversão do cartão
+ * @param referenciaId ID da Compra que gerou o crédito
+ */
+void creditarPontos(UUID usuarioId, Integer programaId, Double valorGasto, Double pontosPorReal, UUID referenciaId);
     
     /**
      * Registra uma transação de pontos (crédito ou débito) e atualiza o saldo do usuário.
@@ -24,4 +33,5 @@ public interface PontoService {
         UUID origemId, 
         String observacoes
     );
+    void reverterCredito(UUID usuarioId, Integer programaId, UUID referenciaId);
 }

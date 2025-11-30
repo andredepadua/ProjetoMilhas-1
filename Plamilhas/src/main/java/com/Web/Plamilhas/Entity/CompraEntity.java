@@ -6,6 +6,7 @@ import java.util.UUID;
 
 import com.Web.Plamilhas.Enums.StatusPontos;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EnumType;
 import jakarta.persistence.Enumerated;
@@ -18,9 +19,13 @@ import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
+import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.Setter;
 
 @Entity
+@Getter
+@Setter
 @Table(name = "compra")
 @Data @Builder @NoArgsConstructor @AllArgsConstructor
 public class CompraEntity {
@@ -37,6 +42,9 @@ public class CompraEntity {
 
     @ManyToOne @JoinColumn(name = "programa_id")
     private ProgramaEntity programa;
+    
+    @Column(name = "caminho_comprovante")
+    private String caminhoComprovante;
 
 
 
@@ -53,6 +61,8 @@ public class CompraEntity {
     private LocalDate dataPrevistaCredito;
     private OffsetDateTime dataCreditado;
     private String observcoes;
+    private OffsetDateTime atualizadoEm;
+    private OffsetDateTime criadoEm;
 
 
 }
