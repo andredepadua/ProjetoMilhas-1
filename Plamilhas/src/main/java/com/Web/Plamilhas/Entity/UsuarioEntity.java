@@ -69,15 +69,18 @@ public void prePersist() {
 private String perfil;
 
 //Relacionamentos
+
+@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 @JsonIgnore
-@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 private List<CartaoUsuarioEntity> cartoes = new ArrayList<>();
 
+
+@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
 @JsonIgnore
-@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
 private List<CompraEntity> compras = new ArrayList<>();
 
-@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL)
+@OneToMany(mappedBy = "usuario", cascade = CascadeType.ALL, orphanRemoval = true)
+@JsonIgnore
 private List<SaldoPontosEntity> saldos = new ArrayList<>();
 
 @Override

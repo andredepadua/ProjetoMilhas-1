@@ -3,6 +3,8 @@ package com.Web.Plamilhas.Entity;
 import java.time.OffsetDateTime;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
@@ -29,6 +31,7 @@ public class CartaoUsuarioEntity {
     // Relacionamento (deve existir para vincular ao usuário)
     @ManyToOne 
     @JoinColumn(name = "usuario_id")
+    @JsonIgnoreProperties("cartoes")
     private UsuarioEntity usuario; 
 
     // 1. CAMPO FALTANDO QUE GERA O getNome()
@@ -40,10 +43,17 @@ public class CartaoUsuarioEntity {
     private String numeroFinal; // Apenas os 4 últimos dígitos (para segurança)
     
     private String bandeira; // Visa, Master, Elo, etc.
+    @Column(name = "numero_cartao", length = 16, nullable = false)
+    private String numeroCartao;
+    // Define quantos pontos o cartão acumula por cada R$ 1 gasto.
+
+    @Column(name = "pontos_por_real", nullable = false)
+    private Double pontosPorReal;
 
     // Relacionamento (deve existir para vincular ao programa de pontos)
     @ManyToOne 
     @JoinColumn(name = "programa_id")
+    @JsonIgnoreProperties("cartoes")
     private ProgramaEntity programa;
 
     private OffsetDateTime criadoEm;
