@@ -1,9 +1,8 @@
-package com.Web.Plamilhas.Controller;
+package com.Web.Plamilhas.DTO;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.Web.Plamilhas.DTO.UsuarioResponseDTO;
 import com.Web.Plamilhas.Entity.UsuarioEntity;
 import com.Web.Plamilhas.Security.UsuarioPrincipal;
 import com.Web.Plamilhas.Service.UsuarioService;

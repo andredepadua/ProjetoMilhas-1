@@ -31,27 +31,3 @@ public class ResgateController {
 }
 
 
-/*package com.Web.Plamilhas.Controller;
-
-import java.util.List;
-
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
-import com.Web.Plamilhas.Entity.ResgateEntity;
-import com.Web.Plamilhas.Repository.ResgateRepository;
-
-import lombok.RequiredArgsConstructor;
-
-@RestController
-@RequestMapping("/api/resgates")
-@RequiredArgsConstructor
-public class ResgateController {
-    private final ResgateRepository repo;
-    @GetMapping 
-    public List<ResgateEntity> listar(){
-        return repo.findAll();
-    }
-
-}*/

@@ -22,7 +22,7 @@ public class AuthController {
     private final UsuarioRepository repo;
     private final JwtTokenProvider jwt;
     private final PasswordEncoder encoder;
-    //private final BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
+    
 
     public AuthController(UsuarioRepository repo, JwtTokenProvider jwt, PasswordEncoder encoder) {
         this.repo = repo;
@@ -30,20 +30,6 @@ public class AuthController {
         this.encoder = encoder;
     }
 
-   /* @PostMapping("/register")
-    public ResponseEntity<?> register(@RequestBody UsuarioEntity usuario) {
-            if(repo.findByEmail(usuario.getEmail()).isPresent()){
-                return ResponseEntity
-                .badRequest()
-                .body(Map.of("erro", "Email já cadastrado"));
-            }   
-
-        usuario.setSenhaHash(encoder.encode(usuario.getSenhaHash()));
-
-        UsuarioEntity salvo = repo.save(usuario);
-        
-        return ResponseEntity.ok(salvo);
-    }*/
 
         @PostMapping("/register")
     public ResponseEntity<?> register(@RequestBody UsuarioRegisterDTO dto) {
@@ -68,19 +54,6 @@ public class AuthController {
             .build());
     }
 
-    /*@PostMapping("/login")
-    public ResponseEntity<Map<String, String>> login(@RequestBody Map<String, String> body) {
-        String email = body.get("email");
-        String senha = body.get("senha");
-
-        var usuario = repo.findByEmail(email).orElseThrow(() -> new RuntimeException("Usuário não encontrado"));
-        if (!encoder.matches(senha, usuario.getSenhaHash())) {
-            throw new RuntimeException("Senha incorreta");
-        }
-
-        String token = jwt.gerarToken(email);
-        return ResponseEntity.ok(Map.of("token", token));
-    }*/
     @PostMapping("/login")
     public ResponseEntity<?> login(@RequestBody UsuarioLoginDTO dto) {
         var opt = repo.findByEmail(dto.getEmail());
